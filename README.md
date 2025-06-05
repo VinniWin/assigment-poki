@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Poki Assignment: Pokémon Explorer
+
+This project is a Pokémon Explorer web app built with [Next.js](https://nextjs.org) and TypeScript. It allows users to browse, search, and view detailed information about Pokémon, including abilities, stats, types, moves, and images. The UI is modern and responsive, featuring custom components and a color mode toggle.
+
+## Features
+
+- Browse a list of Pokémon with images
+- Search Pokémon by name
+- View detailed Pokémon info (abilities, stats, types, moves)
+- Image carousel for Pokémon sprites
+- Light/dark mode toggle
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or newer recommended)
+- npm, yarn, pnpm, or bun
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies:**
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   # or
+   bun install
+   ```
+
+2. **Run the development server:**
+
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   # or
+   bun dev
+   ```
+
+3. **Build and Start in Production (Recommended for Deployment)**
+
+This will generate an optimized, static version of the app with dynamic routes pre-rendered and revalidated once a day (using Next.js ISR — Incremental Static Regeneration).
+
+#### Steps to Build and Start:
 
 ```bash
-npm run dev
+# Step 1: Build the app for production
+npm run build
 # or
-yarn dev
+yarn build
 # or
-pnpm dev
+pnpm build
 # or
-bun dev
+bun build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This compiles your project and pre-generates all static content.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Step 2: Start the production server
+npm run start
+# or
+yarn start
+# or
+pnpm start
+# or
+bun start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Will serve Serves static content (like the homepage and pokemon/[name] page)
+- Will also Dynamically loads Pokémon detail pages when requested
+- Rebuilds those dynamic pages every 24 hours as i set 24 hour timing (Next.js `revalidate`)
 
-## Learn More
+4. **Open your browser:**
 
-To learn more about Next.js, take a look at the following resources:
+   Visit [http://localhost:3000](http://localhost:3000) to see the app.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. **Start editing:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   Modify `src/app/page.tsx` to update the main page. Changes auto-update as you edit.
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/app/` — Main app pages and routes
+- `src/components/` — UI components (cards, carousel, toggles)
+- `src/hooks/` — Custom React hooks
+- `src/lib/` — Utility functions (API, sprite extraction)
+- `src/types/` — TypeScript types for Pokémon data
