@@ -2,17 +2,32 @@
 
 import { useColorModeValue } from "@/hooks/useColorModeValue";
 import { Pokemon } from "@/types/pokemon-types";
-import { Card } from "@chakra-ui/react";
+import { Box, Card, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
+import PokemonCardSkeleton from "./PokemonCardSkeleton";
 
 interface PokemonCardProps {
   readonly pokemons: Pokemon[];
+  loading: boolean;
 }
 
-const PokemonCard = ({ pokemons }: PokemonCardProps) => {
+const PokemonCard = ({ pokemons, loading }: PokemonCardProps) => {
   const textColor = useColorModeValue("gray.800", "gray.100");
   const hoverColor = useColorModeValue("blue.100", "gray.600");
+
+  if (loading) return <PokemonCardSkeleton />;
+
+  if (pokemons.length === 0) {
+    return (
+      <Box width="100%" textAlign="center" mt={10}>
+        <Text fontSize="lg" color={textColor}>
+          No Pokémon found
+        </Text>
+      </Box>
+    );
+  }
+
   return pokemons.map((pokemon) => (
     <Card.Root
       key={pokemon.name}
